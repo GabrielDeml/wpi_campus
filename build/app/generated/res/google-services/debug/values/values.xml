@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">36010316296-debgsr3dlkpa4o46br4kgim3996j5vvk.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://wpicampus2.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">36010316296</string>
+    <string name="google_api_key" translatable="false">AIzaSyC7-kfbelZeD5eGxNAgS0IWJrjPuWj8560</string>
+    <string name="google_app_id" translatable="false">1:36010316296:android:8274d6a08ed04e69d7b7bd</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyC7-kfbelZeD5eGxNAgS0IWJrjPuWj8560</string>
+    <string name="google_storage_bucket" translatable="false">wpicampus2.appspot.com</string>
+    <string name="project_id" translatable="false">wpicampus2</string>
+</resources>
