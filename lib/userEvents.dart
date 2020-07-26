@@ -38,6 +38,7 @@ class _UserEventsState extends State<UserEvents> {
           .orderBy('created', descending: true)
           .snapshots(),
       builder: (context, snapshot) {
+        print(snapshot.hasData);
         if (!snapshot.hasData) return LinearProgressIndicator();
         return _buildList(context, snapshot.data.documents);
       },
@@ -45,8 +46,13 @@ class _UserEventsState extends State<UserEvents> {
   }
 
   Widget _buildList(BuildContext context, List<DocumentSnapshot> snapshot) {
-    List<HomeEvent> homeEvents = snapshot.map((data) => Record.fromSnapshot(data).getHomeEvent()).toList();
+    List<HomeEvent> homeEvents = snapshot.map((data) {
+      final record = Record.fromSnapshot(data);
+      HomeEvent homeEvent = new HomeEvent(record.image, record.title, record.organizer, record.description, record.date, record.time, record.chips, record.location, record.zoom, record.capacity, record.fullDescription, record.contact);
+      return homeEvent;
+    }).toList();
     List<HomeEvent> favorites = [];
+
     return EventCard(homeEvents, favorites);
   }
 
