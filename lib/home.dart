@@ -4,6 +4,7 @@ import 'package:wpi_campus/favoritesPage.dart';
 import 'package:wpi_campus/homeEvent.dart';
 
 
+import 'chipDrawer.dart';
 import 'eventCard.dart';
 import 'eventPage.dart';
 import 'eventSearchDelegate.dart';
@@ -56,6 +57,9 @@ class _HomeState extends State<Home> {
               children: [Image.asset("resources/appBar/wpiLogo.png", fit: BoxFit.contain, height: 32)],
             ),
         actions: <Widget>[
+          IconButton(icon: Icon(Icons.favorite), onPressed: () => {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => FavoritePage(_favorites)))
+            }),
           IconButton (
             icon: Icon(Icons.search),
             onPressed: () {
@@ -66,14 +70,8 @@ class _HomeState extends State<Home> {
             },
           )
         ],
-// TODO favorite
-//          actions: [
-//            IconButton(icon: Icon(Icons.favorite), onPressed: () => {
-//              Navigator.push(context, MaterialPageRoute(builder: (context) => FavoritePage(_favorites)))
-//            }),
-//          ]
       ),
-      drawer: Drawer(),
+      drawer: ChipDrawer(_homeEvents, _favorites),
       body: EventCard(_homeEvents, _favorites),
       );
   }
