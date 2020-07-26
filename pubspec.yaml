@@ -23,6 +23,17 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_tags: "^0.4.8+2"
+  firebase_core: ^0.4.0+9
+  # Add the dependency for the FlutterFire plugin for Google Analytics
+  firebase_analytics: ^5.0.2
+  flappy_search_bar: 1.4.1
+
+  # Add the dependencies for any other Firebase products you want to use in your app
+  # For example, to use Firebase Authentication and Cloud Firestore
+  firebase_auth: ^0.14.0+5
+  cloud_firestore: ^0.13.7
+  intl: ^0.16.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -32,6 +43,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -44,6 +56,12 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  assets:
+    - resources/appBar/wpiLogo.png
+    - resources/imgEvent/covidChallenge.png
+    - resources/imgEvent/foisie.jpg
+    - resources/imgEvent/rush.jpg
+    - resources/imgEvent/careerFair.jpg
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
