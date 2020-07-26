@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase/firebase.dart' as WebFirebase;
 import 'package:flutter/material.dart';
 import 'package:wpi_campus/record.dart';
 import 'package:wpi_campus/userEventPage.dart';

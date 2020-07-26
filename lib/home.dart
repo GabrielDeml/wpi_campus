@@ -45,22 +45,22 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.asset("resources/appBar/wpiLogo.png", fit: BoxFit.contain,
-                height: 32),
-          ],
-        ),
-          actions: [
-            IconButton(icon: Icon(Icons.favorite), onPressed: () => {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => FavoritePage(_favorites)))
-            }),
-          ]
-      ),
+//      appBar: AppBar(
+//        centerTitle: true,
+//        title: Row(
+//          mainAxisAlignment: MainAxisAlignment.center,
+//          mainAxisSize: MainAxisSize.min,
+//          children: [
+//            Image.asset("resources/appBar/wpiLogo.png", fit: BoxFit.contain,
+//                height: 32),
+//          ],
+//        ),
+//          actions: [
+//            IconButton(icon: Icon(Icons.favorite), onPressed: () => {
+//              Navigator.push(context, MaterialPageRoute(builder: (context) => FavoritePage(_favorites)))
+//            }),
+//          ]
+//      ),
 
       body: EventCard(_homeEvents, _favorites)
     );

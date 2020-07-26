@@ -214,9 +214,6 @@ class _AddEvent extends State<AddEvent> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-//          time = selectedTime.toString(),
-//          print(DateTime.now().toString()),
-
           Scaffold.of(context).showSnackBar(snackBar);
           Firestore.instance
               .collection('Events')
@@ -234,7 +231,6 @@ class _AddEvent extends State<AddEvent> {
             'capacity': capacityController.text,
             'image': imageController.text
           });
-//          print(selectedTime.toString().substring(10, time.length - 1)),
         },
         tooltip: "Save",
         backgroundColor: Color.fromRGBO(172, 43, 55, 1),

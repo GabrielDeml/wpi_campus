@@ -36,15 +36,15 @@ class _MainPageStateFul extends State<MainPageStateFul> {
       title: 'WPI Event Manager',
       theme: ThemeData(primaryColor: Color.fromRGBO(172, 43, 55, 1)),
       home: Scaffold(
-//        appBar: AppBar(
-//          title: Row(
-//            mainAxisAlignment: MainAxisAlignment.center,
-//            children: [
-//              Image.asset("resources/appBar/wpiLogo.png", fit: BoxFit.contain,
-//                  height: 32),
-//            ],
-//          ),
-//        ),
+        appBar: AppBar(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset("resources/appBar/wpiLogo.png", fit: BoxFit.contain,
+                  height: 32),
+            ],
+          ),
+        ),
         body: Center(
           child: _widgetOptions.elementAt(_selectedIndex),
         ),
