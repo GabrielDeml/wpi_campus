@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wpi_campus/eventContext.dart';
 import 'package:wpi_campus/homeEvent.dart';
+import 'package:flutter_tags/flutter_tags.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -42,7 +43,7 @@ class _HomeState extends State<Home> {
   Widget _buildHomeEvents(homeEvent) {
 
     return Container (
-      height: 260,
+      height: 300,
       decoration: BoxDecoration(
         boxShadow: [BoxShadow(
           color: Colors.grey.withOpacity(0.5),
@@ -80,7 +81,7 @@ class _HomeState extends State<Home> {
                   padding: EdgeInsets.only(left: 30, top: 10),
                   child: IconButton(
                     icon: _favorites.contains(homeEvent)? new Icon(Icons.favorite) : new Icon(Icons.favorite_border),
-                    color: _favorites.contains(homeEvent)? Color.fromRGBO(118, 0, 18, 1.0) : Colors.white,
+                    color: _favorites.contains(homeEvent)? Color.fromRGBO(255, 93, 96, 0.90) : Colors.white,
                     onPressed: () {
                       setState(() {
                         if(_favorites.contains(homeEvent)) {
@@ -101,6 +102,26 @@ class _HomeState extends State<Home> {
                 _builderContextText(homeEvent),
               ],
             ),
+            Row(
+              children: <Widget>[
+                Container (
+                  padding: EdgeInsets.only(left: 10.0),
+                  child: Chip(
+                    label: Text("Admin"),
+                    backgroundColor: Color.fromRGBO(116, 0, 29, 1.0),
+                    labelStyle: TextStyle(color: Colors.white),
+                    labelPadding: EdgeInsets.only(top: 0, bottom: 0, left: 10, right: 10),
+//                  elevation: 5,
+                  ),
+                ),
+//                Tag(
+//                  id: 1,// optional
+//                  icon: Icon.home, // optional
+//                  title: 'First Tag', // required
+//                  active: true, // optional
+//                )
+              ],
+            )
           ],
         ),
       ),
