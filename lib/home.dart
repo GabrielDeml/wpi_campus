@@ -3,6 +3,7 @@ import 'package:wpi_campus/homeEvent.dart';
 
 
 import 'eventPage.dart';
+import 'userEvents.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -47,11 +48,13 @@ class _HomeState extends State<Home> {
   Widget _buildHomeEvents(homeEvent) {
     final chips = homeEvent.chips;
 
-    return GestureDetector(
+    return
+    GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) => EventPage(homeEvent)));
       },
-      child:      Container (
+      child:
+    Container (
         height: 300,
         decoration: BoxDecoration(
             boxShadow: [BoxShadow(
