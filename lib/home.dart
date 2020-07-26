@@ -51,7 +51,7 @@ class _HomeState extends State<Home> {
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) => EventPage(homeEvent, _favorites)));
       },
-      child:      Container (
+      child: Container (
         height: 300,
         decoration: BoxDecoration(
             boxShadow: [BoxShadow(

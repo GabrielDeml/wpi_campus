@@ -46,7 +46,7 @@ class _EventPageState extends State<EventPage> {
   }
 
   Widget _buildGeneralInfo(homeEvent) {
-    final _font = TextStyle(fontSize: 18.0, color: Colors.black);
+    final _font = TextStyle(fontSize: 16.0, color: Colors.black);
     return Padding(
       padding: EdgeInsets.only(left: 50.0, top: 15.0),
       child: Column(
@@ -84,15 +84,16 @@ class _EventPageState extends State<EventPage> {
     final _font = TextStyle(fontSize: 36.0, color: Colors.black);
     return Row(
       children: <Widget>[
-        Padding(
+        Container(
+          width: 300,
           padding: EdgeInsets.only(left: 15.0, top: 15.0),
           child: Text(homeEvent.title, style: _font),
         ),
         Container(
-          padding: EdgeInsets.only(left: 30, top: 10),
+          padding: EdgeInsets.only(left: 50, top: 10),
           child: IconButton(
             icon: favorites.contains(homeEvent)? new Icon(Icons.favorite) : new Icon(Icons.favorite_border),
-            color: favorites.contains(homeEvent)? Color.fromRGBO(255, 93, 96, 0.90) : Colors.white,
+            color: favorites.contains(homeEvent)? Color.fromRGBO(170, 42, 54, 1.0) : Colors.black,
             onPressed: () {
               setState(() {
                 if(favorites.contains(homeEvent)) {
