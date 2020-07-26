@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:wpi_campus/navbar.dart';
-import 'home.dart';
 
 void main() {
   runApp(MyApp());
