@@ -3,7 +3,6 @@ import 'package:wpi_campus/homeEvent.dart';
 
 
 import 'eventPage.dart';
-import 'userEvents.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -12,9 +11,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  static HomeEvent event1 = new HomeEvent("resources/imgEvent/covidChallenge.png", "Covid Challenge", "I&E, SAO", "Innovate solutions that address the most pressing COVID-19 issues.", "7/25/2020", "4:30-5:30 PM", ["Remote", "Challenge", "Innovation"]);
-  static HomeEvent event2 = new HomeEvent("resources/imgEvent/rush.jpg", "Greek Recuitment", "SAO", "Are you ready to become a member of WPI’s vibrant community of fraternities and sororities?", "7/25/2020", "7:30-10:30 PM", ["In-Person", "Greek"]);
-  static HomeEvent event3 = new HomeEvent("resources/imgEvent/careerFair.jpg", "Career Fair", "CDC", "We can help you take the first step in learning more about jobs and companies that interest you.", "7/25/2020", "2:00-5:00 PM", ["Undecided"]);
+  static HomeEvent event1 = new HomeEvent("resources/imgEvent/covidChallenge.png", "Covid Challenge", "I&E, SAO", "Innovate solutions that address the most pressing COVID-19 issues.", "7/25/2020", "4:30-5:30 PM", ["Remote", "Challenge", "Innovation"], "Online", "https://wpi.zoom.us/", "None");
+  static HomeEvent event2 = new HomeEvent("resources/imgEvent/rush.jpg", "Greek Recuitment", "SAO", "Are you ready to become a member of WPI’s vibrant community of fraternities and sororities?", "7/25/2020", "7:30-10:30 PM", ["In-Person", "Greek"], "106 Higgings Lab", "N/A", "None");
+  static HomeEvent event3 = new HomeEvent("resources/imgEvent/careerFair.jpg", "Career Fair", "CDC", "We can help you take the first step in learning more about jobs and companies that interest you.", "7/25/2020", "2:00-5:00 PM", ["Hybrid"], "203 Salisbury Lab", "https://wpi.zoom.us/", "10");
 
   List<HomeEvent> _homeEvents = [event1, event2, event3];
 
@@ -48,13 +47,11 @@ class _HomeState extends State<Home> {
   Widget _buildHomeEvents(homeEvent) {
     final chips = homeEvent.chips;
 
-    return
-    GestureDetector(
+    return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => EventPage(homeEvent)));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => EventPage(homeEvent, _favorites)));
       },
-      child:
-    Container (
+      child: Container (
         height: 300,
         decoration: BoxDecoration(
             boxShadow: [BoxShadow(
@@ -134,12 +131,6 @@ class _HomeState extends State<Home> {
     );
   }
 
-
-//  child: Column(
-//  children: List.generate(text.length,(index){
-//  return Text(text[index].toString());
-//  }),
-
   Widget getTextWidgets(List<String> strings)
   {
     return new Row(children: strings.map((item) => new Text(item)).toList());
@@ -177,13 +168,5 @@ class _HomeState extends State<Home> {
       child: Text(homeEvent.date + "  |  " + homeEvent.time, style: _font),
     );
   }
-
-//  Widget _builderContextText(homeEvent) {
-//    final _font = TextStyle(fontSize: 16.0, color: Colors.white);
-//    return Padding(
-//      padding: EdgeInsets.only(left: 8.0, top: 5.0),
-//      child: Text(homeEvent.getContextString(), style: _font),
-//    );
-//  }
 
 }

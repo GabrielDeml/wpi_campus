@@ -6,10 +6,13 @@ class HomeEvent {
   String description;
   String date;
   String time;
+  String location;
+  String zoom;
+  String capacity;
   List<String> chips;
 
 
   // Constructor
-  HomeEvent(this.img, this.title, this.organizer, this.description, this.date, this.time, this.chips);
+  HomeEvent(this.img, this.title, this.organizer, this.description, this.date, this.time, this.chips, this.location, this.zoom, this.capacity);
 
 }
