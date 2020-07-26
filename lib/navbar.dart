@@ -28,18 +28,28 @@ class _MainPageStateFul extends State<MainPageStateFul> {
     _widgetOptions.add(Home());
     _widgetOptions.add(UserEvents());
     _widgetOptions.add(AddEvent());
-    _widgetOptions.add(Test());
+//    _widgetOptions.add(Test());
 
 //    Build app bar
     return MaterialApp(
+
       title: 'WPI Event Manager',
       theme: ThemeData(primaryColor: Color.fromRGBO(172, 43, 55, 1)),
       home: Scaffold(
+        appBar: AppBar(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset("resources/appBar/wpiLogo.png", fit: BoxFit.contain,
+                  height: 32),
+            ],
+          ),
+        ),
         body: Center(
           child: _widgetOptions.elementAt(_selectedIndex),
         ),
         bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: Color(0xff008DCB),
+          selectedItemColor: Color.fromRGBO(172, 43, 55, 1),
           type: BottomNavigationBarType.fixed,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -54,10 +64,10 @@ class _MainPageStateFul extends State<MainPageStateFul> {
               icon: Icon(Icons.add),
               title: Text('Add Event'),
             ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            title: Text('Testing'),
-          ),
+//          BottomNavigationBarItem(
+//            icon: Icon(Icons.settings),
+//            title: Text('Testing'),
+//          ),
           ],
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,

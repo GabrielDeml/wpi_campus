@@ -20,16 +20,16 @@ class _EventPageState extends State<EventPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold (
-      appBar: AppBar(
-        centerTitle: true,
-        title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.asset("resources/appBar/wpiLogo.png", fit: BoxFit.contain,
-                height: 32),
-          ],
-        ),
-      ),
+//      appBar: AppBar(
+//        centerTitle: true,
+//        title: Row(
+//          mainAxisSize: MainAxisSize.min,
+//          children: [
+//            Image.asset("resources/appBar/wpiLogo.png", fit: BoxFit.contain,
+//                height: 32),
+//          ],
+//        ),
+//      ),
       body: _buildInfo(context),
     );
   }
