@@ -18,6 +18,7 @@ class _ChipDrawerState extends State<ChipDrawer> {
   final List<HomeEvent> favorite;
 
   final List<String> tags = [
+    "!",
     "In-Person",
     "Hybrid",
     "Remote",
