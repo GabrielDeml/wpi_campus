@@ -8,10 +8,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<HomeEvent> _homeEvents = [
-    new HomeEvent("resources/imgEvent/covidChallenge.png", "Covid Challenge", "WPI", "A Covid Challenge", "7/25/2020", EventContext.remote),
-    new HomeEvent("resources/imgEvent/foisie.jpg", "Covid Challenge", "MIT", "A Covid Challenge", "7/25/2020", EventContext.remote)
-  ];
+  static HomeEvent event1 = new HomeEvent("resources/imgEvent/covidChallenge.png", "Covid Challenge", "I&E, SAO", "Innovate solutions that address the most pressing COVID-19 issues.", "7/25/2020", EventContext.remote);
+  static HomeEvent event2 = new HomeEvent("resources/imgEvent/rush.jpg", "Greek Recuitment", "SAO", "Are you ready to become a member of WPI’s vibrant community of fraternities and sororities?", "7/25/2020", EventContext.in_person);
+  static HomeEvent event3 = new HomeEvent("resources/imgEvent/careerFair.jpg", "Career Fair", "CDC", "We can help you take the first step in learning more about jobs and companies that interest you.", "7/25/2020", EventContext.undecided);
+  List<HomeEvent> _homeEvents = [event1, event2, event3];
+
+  List<HomeEvent> _favorites = [event1, event3];
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,7 @@ class _HomeState extends State<Home> {
   Widget _buildHomeEvents(homeEvent) {
 
     return Container (
-      height: 250,
+      height: 260,
       decoration: BoxDecoration(
         boxShadow: [BoxShadow(
           color: Colors.grey.withOpacity(0.5),
@@ -56,31 +58,93 @@ class _HomeState extends State<Home> {
       ),
 
       child: Card(
-        margin: EdgeInsets.only(top: 140.0),
+        margin: EdgeInsets.only(top: 130.0),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.zero, topRight: Radius.zero, bottomLeft: Radius.circular(15.0), bottomRight: Radius.circular(15.0))),
         color: Color.fromRGBO(172, 43, 55, 0.90),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(homeEvent.title),
-            Text(homeEvent.organizer),
+            Row(
+              children: <Widget>[
+                Container (
+                  width: 300,
+                  child: Row(
+                    children: <Widget>[
+                      _buildTitleText(homeEvent),
+                      _buildOrganizerText(homeEvent),
+                    ],
+                  ),
+                ),
+
+                Container(
+                  padding: EdgeInsets.only(left: 30, top: 10),
+                  child: IconButton(
+                    icon: _favorites.contains(homeEvent)? new Icon(Icons.favorite) : new Icon(Icons.favorite_border),
+                    color: _favorites.contains(homeEvent)? Color.fromRGBO(118, 0, 18, 1.0) : Colors.white,
+                    onPressed: () {
+                      setState(() {
+                        if(_favorites.contains(homeEvent)) {
+                          _favorites.remove(homeEvent);
+                        } else {
+                          _favorites.add(homeEvent);
+                        }
+                      });
+                    },
+                  ),
+                )
+              ],
+            ),
+            _buildDescriptionText(homeEvent),
+            Row(
+              children: <Widget>[
+                _builderDateText(homeEvent),
+                _builderContextText(homeEvent),
+              ],
+            ),
           ],
         ),
-//        child: Text(homeEvent.date),
-
-      ),
-//      child: Card(
-//        child: FittedBox(child: homeEvent.img, fit: BoxFit.cover),
-//      ),
-    );
-
-    Card (
-      margin: EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
-      child: Column(
-        children: <Widget>[
-          homeEvent.img,
-          Text(homeEvent.title)
-        ],
       ),
     );
   }
+
+  Widget _buildTitleText(homeEvent) {
+    final _font = TextStyle(fontSize: 24.0, color: Colors.white);
+    return Padding(
+      padding: EdgeInsets.only(left: 16.0, top: 16.0),
+      child: Text(homeEvent.title, style: _font),
+    );
+  }
+
+  Widget _buildOrganizerText(homeEvent) {
+    final _font = TextStyle(fontSize: 18.0, color: Colors.white, fontStyle: FontStyle.italic);
+    return Padding(
+      padding: EdgeInsets.only(left: 8.0, top: 16.0),
+      child: Text("(" + homeEvent.organizer + ")", style: _font),
+    );
+  }
+
+  Widget _buildDescriptionText(homeEvent) {
+    final _font = TextStyle(fontSize: 14.0, color: Colors.white);
+    return Padding(
+      padding: EdgeInsets.only(left: 35.0, right: 35.0, top: 5.0),
+      child: Text(homeEvent.description, style: _font),
+    );
+  }
+
+  Widget _builderDateText(homeEvent) {
+    final _font = TextStyle(fontSize: 16.0, color: Colors.white);
+    return Padding(
+      padding: EdgeInsets.only(left: 35.0, top: 5.0),
+      child: Text(homeEvent.date + "  |", style: _font),
+    );
+  }
+
+  Widget _builderContextText(homeEvent) {
+    final _font = TextStyle(fontSize: 16.0, color: Colors.white);
+    return Padding(
+      padding: EdgeInsets.only(left: 8.0, top: 5.0),
+      child: Text(homeEvent.getContextString(), style: _font),
+    );
+  }
+
 }
