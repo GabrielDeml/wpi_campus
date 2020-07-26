@@ -12,6 +12,15 @@ class _AddEvent extends State<AddEvent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset("resources/appBar/wpiLogo.png", fit: BoxFit.contain,
+                  height: 32),
+            ],
+          ),
+        ),
       body: Container(
         padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
         child: Column(
