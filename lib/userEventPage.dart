@@ -46,9 +46,36 @@ class _UserEventPageState extends State<UserEventPage> {
         .then((documentSnapshot) {
 //      print(documentSnapshot.data['description']);
       setState(() {
-        snapShotData.description = documentSnapshot.data['description'];
-        snapShotData.name = documentSnapshot.data['name'];
-        snapShotData.organizer = documentSnapshot.data['organizer'];
+        snapShotData.description = documentSnapshot.data['description'] != null
+            ? documentSnapshot.data['description']
+            : '';
+        snapShotData.name = documentSnapshot.data['name'] != null
+            ? documentSnapshot.data['name']
+            : '';
+        snapShotData.organizer = documentSnapshot.data['organizer'] != null
+            ? documentSnapshot.data['organizer']
+            : '';
+        snapShotData.contact = documentSnapshot.data['contact'] != null
+            ? documentSnapshot.data['contact']
+            : '';
+        snapShotData.date = documentSnapshot.data['date'] != null
+            ? documentSnapshot.data['date']
+            : '';
+        snapShotData.time = documentSnapshot.data['time'] != null
+            ? documentSnapshot.data['time']
+            : '';
+        snapShotData.location = documentSnapshot.data['location'] != null
+            ? documentSnapshot.data['location']
+            : '';
+        snapShotData.zoom = documentSnapshot.data['zoom'] != null
+            ? documentSnapshot.data['zoom']
+            : '';
+        snapShotData.capacity = documentSnapshot.data['capacity'] != null
+            ? documentSnapshot.data['capacity']
+            : '';
+        snapShotData.image = documentSnapshot.data['image'] != null
+            ? documentSnapshot.data['image']
+            : 'https://www.wpi.edu/sites/default/files/inline-image/Offices/Marketing-Communications/WPI_Inst_Prim_FulClr.png';
       });
     });
     return ListView(
@@ -99,8 +126,8 @@ class _UserEventPageState extends State<UserEventPage> {
           Text("Organizer: " + snapShotData.organizer, style: _font),
           Text("Contact: " + snapShotData.contact, style: _font),
           Text(" "),
-          Text("Date: " + snapShotData.date + " | " + snapShotData.time,
-              style: _font),
+          Text("Date: " + snapShotData.date, style: _font),
+          Text("Time: " +  snapShotData.time, style: _font),
           Text("Location: " + snapShotData.location, style: _font),
           Text(" "),
           Text("Zoom Link: " + snapShotData.zoom, style: _font),
