@@ -3,16 +3,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Record {
   final String name;
   final String description;
-  final int maxCapacity;
+  final String organizer;
+  final String maxCapacity;
   final DocumentReference reference;
 
   Record.fromMap(Map<String, dynamic> map, {this.reference})
-      : assert(map['name'] != null),
-        assert(map['maxCapacity'] != null),
-        assert(map['description'] != null),
-        name = map['name'],
-        maxCapacity = map['maxCapacity'],
-        description = map['description'];
+      :name = map['name'] != null ? map['name']: '',
+        maxCapacity = map['maxCapacity'] != null ? map['maxCapacity']: '',
+        description = map['description'] != null ? map['description'] : '',
+        organizer = map['organizer'] != null ? map['organizer'] : '';
 
   Record.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data, reference: snapshot.reference);

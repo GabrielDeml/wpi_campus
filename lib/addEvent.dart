@@ -9,6 +9,7 @@ class AddEvent extends StatefulWidget {
 class _AddEvent extends State<AddEvent> {
   TextEditingController nameController = new TextEditingController();
   TextEditingController descriptionController = new TextEditingController();
+  TextEditingController organizerController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,9 +59,26 @@ class _AddEvent extends State<AddEvent> {
                 ),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: organizerController,
+                obscureText: false,
+                textAlign: TextAlign.center,
+                decoration: new InputDecoration(
+                  labelText: "Organizer",
+                  fillColor: Colors.white,
+                  border: new OutlineInputBorder(
+                    borderRadius: new BorderRadius.circular(25.0),
+                    borderSide: new BorderSide(),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
+
       floatingActionButton: FloatingActionButton(
         onPressed: () =>
         {
@@ -70,8 +88,9 @@ class _AddEvent extends State<AddEvent> {
               .document(DateTime.now().toString())
               .setData({
             'name': nameController.text,
-            'maxCapacity': 3,
+            'maxCapacity': "3",
             'description' : descriptionController.text,
+            'organizer' : organizerController.text,
           })
         },
         tooltip: "Save",
