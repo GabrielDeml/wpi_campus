@@ -18,7 +18,7 @@ class _UserEventsState extends State<UserEvents> {
 
   Widget _buildBody(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: Firestore.instance.collection('Events').snapshots(),
+      stream: Firestore.instance.collection('Events').orderBy('created', descending: true).snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) return LinearProgressIndicator();
 
@@ -47,7 +47,7 @@ class _UserEventsState extends State<UserEvents> {
         ),
         child: ListTile(
           title: Text(record.name),
-          trailing: Text(record.maxCapacity.toString()),
+//          trailing: Text(record.capacity.toString()),
           subtitle: Text(record.description),
           onTap: () {
             print(data.documentID);
