@@ -41,7 +41,25 @@ class _EventPageState extends State<EventPage> {
         _buildTitleText(homeEvent),
         _buildChips(homeEvent),
         _buildGeneralInfo(homeEvent),
+        _buildDescriptionHeader(),
+        _buildDescription(homeEvent),
       ],
+    );
+  }
+
+  Widget _buildDescription(homeEvent) {
+    final _font = TextStyle(fontSize: 18.0, color: Colors.black);
+    return Padding(
+      padding: EdgeInsets.only(left: 30.0, top: 15.0, right: 30.0, bottom: 30.0),
+      child: Text(homeEvent.fullDescription, style: _font),
+    );
+  }
+
+  Widget _buildDescriptionHeader() {
+    final _font = TextStyle(fontSize: 28.0, color: Colors.black);
+    return Padding(
+      padding: EdgeInsets.only(left: 15.0, top: 15.0),
+      child: Text("Description", style: _font),
     );
   }
 
@@ -53,10 +71,14 @@ class _EventPageState extends State<EventPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text("Organization: " + homeEvent.organizer, style: _font),
+          Text("Contact: " + homeEvent.contact, style: _font),
+          Text(" "),
           Text("Date: " + homeEvent.date + " | " + homeEvent.time, style: _font),
           Text("Location: " + homeEvent.location, style: _font),
+          Text(" "),
           Text("Zoom Link: " + homeEvent.zoom, style: _font),
           Text("Capacity: " + homeEvent.capacity, style: _font),
+
           ],
       ),
     );
@@ -106,10 +128,6 @@ class _EventPageState extends State<EventPage> {
           ),
         )
       ],
-//        Padding(
-//      padding: EdgeInsets.only(left: 15.0, top: 15.0),
-//      child: Text(homeEvent.title, style: _font),
-//    )
     );
   }
 
