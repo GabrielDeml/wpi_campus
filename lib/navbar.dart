@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wpi_campus/addEvent.dart';
+import 'package:wpi_campus/test.dart';
 import 'userEvents.dart';
 import 'home.dart';
-
-
 
 class MainPageStateFul extends StatefulWidget {
   MainPageStateFul({Key key}) : super(key: key);
@@ -25,44 +24,44 @@ class _MainPageStateFul extends State<MainPageStateFul> {
 
   @override
   Widget build(BuildContext context) {
-
 //  Home screen buttons
     _widgetOptions.add(Home());
     _widgetOptions.add(UserEvents());
     _widgetOptions.add(AddEvent());
-//    _widgetOptions.add(AdsTest());
+    _widgetOptions.add(Test());
 
 //    Build app bar
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('The Mood'),
-      ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Color(0xff008DCB),
-        type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
+    return MaterialApp(
+      title: 'WPI Event Manager',
+      theme: ThemeData(primaryColor: Color.fromRGBO(172, 43, 55, 1)),
+      home: Scaffold(
+        body: Center(
+          child: _widgetOptions.elementAt(_selectedIndex),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Color(0xff008DCB),
+          type: BottomNavigationBarType.fixed,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text('Home'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_today),
+              title: Text('Events'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.add),
+              title: Text('Add Event'),
+            ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home'),
+            icon: Icon(Icons.settings),
+            title: Text('Testing'),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today),
-            title: Text('Events'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add),
-            title: Text('Add Event'),
-          ),
-//          BottomNavigationBarItem(
-//            icon: Icon(Icons.whatshot),
-//            title: Text('Ads'),
-//          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+          ],
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
+        ),
       ),
     );
   }
