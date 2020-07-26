@@ -1,3 +1,5 @@
+import 'package:flutter/rendering.dart';
+
 class HomeEvent {
   // Variables
   String img;
@@ -17,4 +19,8 @@ class HomeEvent {
   // Constructor
   HomeEvent(this.img, this.title, this.organizer, this.description, this.date, this.time, this.chips, this.location, this.zoom, this.capacity, this.fullDescription, this.contact);
 
+  @override
+  String toString() {
+    return this.title;
+  }
 }
