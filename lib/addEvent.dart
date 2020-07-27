@@ -60,6 +60,15 @@ class _AddEvent extends State<AddEvent> {
     );
 
     return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset("resources/appBar/wpiLogo.png", fit: BoxFit.contain,
+                height: 32),
+          ],
+        ),
+      ),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.fromLTRB(20, 20, 20, 20),

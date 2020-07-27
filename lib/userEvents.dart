@@ -14,7 +14,18 @@ class UserEvents extends StatefulWidget {
 class _UserEventsState extends State<UserEvents> {
   @override
   Widget build(BuildContext context) {
-    return _buildBody(context);
+    return Scaffold(
+        appBar: AppBar(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset("resources/appBar/wpiLogo.png", fit: BoxFit.contain,
+                  height: 32),
+            ],
+          ),
+        ),
+        body:_buildBody(context),
+    );
   }
 
   Widget _buildBody(BuildContext context) {
