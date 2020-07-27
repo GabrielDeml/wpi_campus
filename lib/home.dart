@@ -4,6 +4,7 @@ import 'package:wpi_campus/favoritesPage.dart';
 import 'package:wpi_campus/homeEvent.dart';
 
 
+import 'chipDrawer.dart';
 import 'eventCard.dart';
 import 'eventPage.dart';
 import 'eventSearchDelegate.dart';
@@ -35,9 +36,9 @@ class _HomeState extends State<Home> {
       " and virtual Career Fairs for WPI students and alumni to learn about full-time, part-time, summer internship, and co-op opportunities. A great way"
       " to meet and recruit key talent from all WPI disciplines, attending a Career Fair will also increase your organization’s visibility on campus.";
 
-  static HomeEvent event1 = new HomeEvent("resources/imgEvent/covidChallenge.png", "Covid Challenge", "I&E, SAO", "Innovate solutions that address the most pressing COVID-19 issues.", "7/25/2020", "4:30-5:30 PM", ["Remote", "Challenge", "Innovation"], "Online", "https://wpi.zoom.us/", "None", description1, "gr-WPITogetherCovid19InnovationChallenge@wpi.edu");
-  static HomeEvent event2 = new HomeEvent("resources/imgEvent/rush.jpg", "Greek Recuitment", "SAO", "Are you ready to become a member of WPI’s vibrant community of fraternities and sororities?", "7/25/2020", "7:30-10:30 PM", ["In-Person", "Greek"], "106 Higgings Lab", "N/A", "None", description2, "sao@wpi.edu");
-  static HomeEvent event3 = new HomeEvent("resources/imgEvent/careerFair.jpg", "Career Fair", "CDC", "We can help you take the first step in learning more about jobs and companies that interest you.", "7/25/2020", "2:00-5:00 PM", ["Hybrid"], "203 Salisbury Lab", "https://wpi.zoom.us/", "10", description3, "cdc@wpi.edu");
+  static HomeEvent event1 = new HomeEvent("resources/imgEvent/covidChallenge.png", "Covid Challenge", "I&E, SAO", "Innovate solutions that address the most pressing COVID-19 issues.", "7/25/2020", "4:30-5:30 PM", ["!", "Remote", "Challenge", "Innovation"], "Online", "https://wpi.zoom.us/", "None", description1, "gr-WPITogetherCovid19InnovationChallenge@wpi.edu");
+  static HomeEvent event2 = new HomeEvent("resources/imgEvent/rush.jpg", "Greek Recuitment", "SAO", "Are you ready to become a member of WPI’s vibrant community of fraternities and sororities?", "7/25/2020", "7:30-10:30 PM", ["!", "In-Person", "Greek"], "106 Higgings Lab", "N/A", "None", description2, "sao@wpi.edu");
+  static HomeEvent event3 = new HomeEvent("resources/imgEvent/careerFair.jpg", "Career Fair", "CDC", "We can help you take the first step in learning more about jobs and companies that interest you.", "7/25/2020", "2:00-5:00 PM", ["!", "Hybrid"], "203 Salisbury Lab", "https://wpi.zoom.us/", "10", description3, "cdc@wpi.edu");
 
   List<HomeEvent> _homeEvents = [event1, event2, event3];
 
@@ -56,6 +57,9 @@ class _HomeState extends State<Home> {
               children: [Image.asset("resources/appBar/wpiLogo.png", fit: BoxFit.contain, height: 32)],
             ),
         actions: <Widget>[
+          IconButton(icon: Icon(Icons.favorite), onPressed: () => {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => FavoritePage(_favorites)))
+            }),
           IconButton (
             icon: Icon(Icons.search),
             onPressed: () {
@@ -66,14 +70,8 @@ class _HomeState extends State<Home> {
             },
           )
         ],
-// TODO favorite
-//          actions: [
-//            IconButton(icon: Icon(Icons.favorite), onPressed: () => {
-//              Navigator.push(context, MaterialPageRoute(builder: (context) => FavoritePage(_favorites)))
-//            }),
-//          ]
       ),
-      drawer: Drawer(),
+      drawer: ChipDrawer(_homeEvents, _favorites),
       body: EventCard(_homeEvents, _favorites),
       );
   }
