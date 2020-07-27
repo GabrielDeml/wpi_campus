@@ -12,13 +12,13 @@ const RESOURCES = {
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "115e937bb829a890521f72d2e664b632",
 "assets/fonts/MaterialIcons-Regular.otf": "a68d2a28c526b3b070aefca4bac93d25",
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
-"assets/NOTICES": "48be53414a8f67db839ea8209f7d0bb9",
+"assets/NOTICES": "f5c0b2090b988f0da5fd3b0fb2341ee4",
 "assets/resources/imgEvent/covidChallenge.png": "a3fbb0830bfb09eef965060f92c24a41",
 "assets/resources/imgEvent/foisie.jpg": "7b9371c206a4534aaeea652d484b2132",
 "assets/resources/imgEvent/rush.jpg": "274edcab7a3f8355074a663375f8ce8c",
 "assets/resources/imgEvent/careerFair.jpg": "d35241173eec0d993fc30cad7a055ece",
 "assets/resources/appBar/wpiLogo.png": "111be5c4f9e8c81b5d92993e50a802ac",
-"favicon.png": "5dcef449791fa27946b3d35ad8803796",
+"favicon.png": "632afeb281b450c571833e1cf33a9c51",
 "main.dart.js": "eb64233bef63644f6793aec54eec5a06"
 };
 
