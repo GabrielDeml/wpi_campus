@@ -19,7 +19,7 @@ const RESOURCES = {
 "assets/resources/imgEvent/careerFair.jpg": "d35241173eec0d993fc30cad7a055ece",
 "assets/resources/appBar/wpiLogo.png": "111be5c4f9e8c81b5d92993e50a802ac",
 "favicon.png": "632afeb281b450c571833e1cf33a9c51",
-"main.dart.js": "eb64233bef63644f6793aec54eec5a06"
+"main.dart.js": "191b20aab129672a7d9965d8490d0b52"
 };
 
 // The application shell files that are downloaded before a service worker can

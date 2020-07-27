@@ -73,9 +73,7 @@ class _UserEventPageState extends State<UserEventPage> {
         snapShotData.capacity = documentSnapshot.data['capacity'] != null
             ? documentSnapshot.data['capacity']
             : '';
-        snapShotData.image = documentSnapshot.data['image'] != null
-            ? documentSnapshot.data['image']
-            : 'https://www.wpi.edu/sites/default/files/inline-image/Offices/Marketing-Communications/WPI_Inst_Prim_FulClr.png';
+        snapShotData.image = 'https://www.wpi.edu/sites/default/files/inline-image/Offices/Marketing-Communications/WPI_Inst_Prim_FulClr.png';
       });
     });
     return ListView(

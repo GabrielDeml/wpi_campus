@@ -201,22 +201,22 @@ class _AddEvent extends State<AddEvent> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  controller: imageController,
-                  obscureText: false,
-                  textAlign: TextAlign.center,
-                  decoration: new InputDecoration(
-                    labelText: "Image URL",
-                    fillColor: Colors.white,
-                    border: new OutlineInputBorder(
-                      borderRadius: new BorderRadius.circular(25.0),
-                      borderSide: new BorderSide(),
-                    ),
-                  ),
-                ),
-              ),
+//              Padding(
+//                padding: const EdgeInsets.all(8.0),
+//                child: TextField(
+//                  controller: imageController,
+//                  obscureText: false,
+//                  textAlign: TextAlign.center,
+//                  decoration: new InputDecoration(
+//                    labelText: "Image URL",
+//                    fillColor: Colors.white,
+//                    border: new OutlineInputBorder(
+//                      borderRadius: new BorderRadius.circular(25.0),
+//                      borderSide: new BorderSide(),
+//                    ),
+//                  ),
+//                ),
+//              ),
             ],
           ),
         ),
@@ -238,7 +238,7 @@ class _AddEvent extends State<AddEvent> {
             'created': FieldValue.serverTimestamp(),
             'zoom': zoomController.text,
             'capacity': capacityController.text,
-            'image': imageController.text
+//            'image': imageController.text
           });
         },
         tooltip: "Save",
