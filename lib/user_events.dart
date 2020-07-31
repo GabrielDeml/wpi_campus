@@ -19,54 +19,50 @@ class UserEvents extends StatelessWidget {
           ],
         ),
       ),
-      body: _buildBody(context),
+      body: StreamBuilder<QuerySnapshot>(
+        // todo cache stream with Provider or GetIt
+        stream: Firestore.instance
+            .collection('Events')
+            .orderBy('created', descending: true)
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) return LinearProgressIndicator();
+
+          return ListView(
+            padding: const EdgeInsets.only(top: 20.0),
+            children: snapshot.data.documents
+                .map((data) => _UserEventTile(Record.fromSnapshot(data)))
+                .toList(),
+          );
+        },
+      ),
     );
   }
+}
 
-  Widget _buildBody(BuildContext context) {
-    return StreamBuilder<QuerySnapshot>(
-      stream: Firestore.instance
-          .collection('Events')
-          .orderBy('created', descending: true)
-          .snapshots(),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) return LinearProgressIndicator();
+class _UserEventTile extends StatelessWidget {
+  final Record record;
 
-        return _buildList(context, snapshot.data.documents);
-      },
-    );
-  }
+  const _UserEventTile(this.record, {Key key}) : super(key: key);
 
-  Widget _buildList(BuildContext context, List<DocumentSnapshot> snapshot) {
-    return ListView(
-      padding: const EdgeInsets.only(top: 20.0),
-      children: snapshot.map((data) => _buildListItem(context, data)).toList(),
-    );
-  }
-
-  Widget _buildListItem(BuildContext context, DocumentSnapshot data) {
-    final record = Record.fromSnapshot(data);
-
-    return Padding(
+  @override
+  Widget build(BuildContext context) {
+    return Container(
       key: ValueKey(record.name),
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey),
-          borderRadius: BorderRadius.circular(5.0),
-        ),
-        child: ListTile(
-          title: Text(record.name),
-//          trailing: Text(record.capacity.toString()),
-          subtitle: Text(record.description),
-          onTap: () {
-            print(data.documentID);
-            return Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => UserEventPage(data.documentID)));
-          },
-        ),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey),
+        borderRadius: BorderRadius.circular(5.0),
+      ),
+      child: ListTile(
+        title: Text(record.name),
+        subtitle: Text(record.description),
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => UserEventPage(record)),
+          );
+        },
       ),
     );
   }
