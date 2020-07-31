@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:wpi_campus/homeEvent.dart';
+import 'package:wpi_campus/home_event.dart';
 
-import 'firebaseData.dart';
+import 'firebase_data.dart';
 
 class UserEventPage extends StatefulWidget {
   final String documentId;

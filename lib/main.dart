@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wpi_campus/addEvent.dart';
+import 'package:wpi_campus/add_event.dart';
 import 'package:wpi_campus/home.dart';
-import 'package:wpi_campus/userEvents.dart';
+import 'package:wpi_campus/user_events.dart';
 
 void main() {
   runApp(MaterialApp(

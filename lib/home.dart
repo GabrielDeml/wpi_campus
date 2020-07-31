@@ -1,13 +1,13 @@
 import 'package:flappy_search_bar/flappy_search_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:wpi_campus/favoritesPage.dart';
-import 'package:wpi_campus/homeEvent.dart';
+import 'package:wpi_campus/favorites_page.dart';
+import 'package:wpi_campus/home_event.dart';
 
 
-import 'chipDrawer.dart';
-import 'eventCard.dart';
-import 'eventPage.dart';
-import 'eventSearchDelegate.dart';
+import 'chip_drawer.dart';
+import 'event_card.dart';
+import 'event_page.dart';
+import 'event_search_delegate.dart';
 
 class Home extends StatefulWidget {
   @override
