@@ -1,26 +1,34 @@
-import 'package:flutter/rendering.dart';
-
 class HomeEvent {
-  // Variables
-  String img;
-  String title;
-  String organizer;
-  String description;
-  String date;
-  String time;
-  String location;
-  String zoom;
-  String capacity;
-  String fullDescription;
-  String contact;
-  List<String> chips;
+  final String img;
+  final String title;
+  final String organizer;
+  final String description;
+  final String date;
+  final String time;
+  final String location;
+  final String zoom;
+  final String capacity;
+  final String fullDescription;
+  final String contact;
+  final List<String> chips;
 
+  HomeEvent(
+    this.img,
+    this.title,
+    this.organizer,
+    this.description,
+    this.date,
+    this.time,
+    this.chips,
+    this.location,
+    this.zoom,
+    this.capacity,
+    this.fullDescription,
+    this.contact,
+  );
 
-  // Constructor
-  HomeEvent(this.img, this.title, this.organizer, this.description, this.date, this.time, this.chips, this.location, this.zoom, this.capacity, this.fullDescription, this.contact);
+  // todo fromMap and fromSnapshot
 
   @override
-  String toString() {
-    return this.title;
-  }
+  String toString() => title;
 }
