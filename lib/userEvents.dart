@@ -3,33 +3,32 @@ import 'package:flutter/material.dart';
 import 'package:wpi_campus/record.dart';
 import 'package:wpi_campus/userEventPage.dart';
 
-class UserEvents extends StatefulWidget {
-  @override
-  _UserEventsState createState() {
-    return _UserEventsState();
-  }
-}
-
-class _UserEventsState extends State<UserEvents> {
+class UserEvents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset("resources/appBar/wpiLogo.png", fit: BoxFit.contain,
-                  height: 32),
-            ],
-          ),
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              "resources/appBar/wpiLogo.png",
+              fit: BoxFit.contain,
+              height: 32,
+            ),
+          ],
         ),
-        body:_buildBody(context),
+      ),
+      body: _buildBody(context),
     );
   }
 
   Widget _buildBody(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: Firestore.instance.collection('Events').orderBy('created', descending: true).snapshots(),
+      stream: Firestore.instance
+          .collection('Events')
+          .orderBy('created', descending: true)
+          .snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) return LinearProgressIndicator();
 
@@ -62,12 +61,13 @@ class _UserEventsState extends State<UserEvents> {
           subtitle: Text(record.description),
           onTap: () {
             print(data.documentID);
-            return Navigator.push(context, MaterialPageRoute(builder: (context) => UserEventPage(data.documentID)));
+            return Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => UserEventPage(data.documentID)));
           },
         ),
       ),
     );
   }
 }
-
-
