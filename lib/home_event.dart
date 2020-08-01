@@ -12,7 +12,7 @@ class HomeEvent {
   final String contact;
   final List<String> chips;
 
-  HomeEvent(
+  const HomeEvent(
     this.img,
     this.title,
     this.organizer,
