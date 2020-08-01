@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  rxdart: ^0.24.1
+  get_it: ^4.0.4
   flutter_tags: "^0.4.8+2"
   firebase_core: ^0.4.0+9
   # Add the dependency for the FlutterFire plugin for Google Analytics

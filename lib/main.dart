@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:wpi_campus/add_event.dart';
-import 'package:wpi_campus/home.dart';
-import 'package:wpi_campus/user_events.dart';
+import 'package:wpi_campus/ui/home.dart';
+import 'package:wpi_campus/model/repositories/data_repository.dart';
+import 'package:wpi_campus/model/repositories/firebase/firebase_data_repository.dart';
+import 'package:wpi_campus/ui/user_events.dart';
+
+final get = GetIt.instance;
 
 void main() {
+  get.registerSingleton<DataRepository>(FirebaseDataRepository());
   runApp(MaterialApp(
     title: 'WPI Event Manager',
     theme: ThemeData(primaryColor: Color.fromRGBO(172, 43, 55, 1)),

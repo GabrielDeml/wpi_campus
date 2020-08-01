@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
-import 'home_event.dart';
+import '../model/home_event.dart';
 import 'event_card.dart';
 
 class ChipDrawer extends StatefulWidget {
