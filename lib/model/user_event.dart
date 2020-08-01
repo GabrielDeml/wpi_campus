@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Record {
+class UserEvent {
   final String name;
   final String description;
   final String organizer;
@@ -14,7 +14,7 @@ class Record {
 
   final DocumentReference reference;
 
-  Record.fromMap(Map<String, dynamic> map, {this.reference})
+  UserEvent.fromMap(Map<String, dynamic> map, {this.reference})
       : name = map['name'] ?? '',
         description = map['description'] ?? '',
         organizer = map['organizer'] ?? '',
@@ -26,7 +26,7 @@ class Record {
         capacity = map['capacity'] ?? '', 
         image = map['image'] ?? 'https://www.wpi.edu/sites/default/files/inline-image/Offices/Marketing-Communications/WPI_Inst_Prim_FulClr.png';
 
-  Record.fromSnapshot(DocumentSnapshot snapshot)
+  UserEvent.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data, reference: snapshot.reference);
 
   @override

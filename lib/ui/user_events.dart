@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:wpi_campus/record.dart';
-import 'package:wpi_campus/user_event_page.dart';
+import 'package:wpi_campus/model/user_event.dart';
+import 'package:wpi_campus/ui/user_event_page.dart';
 
 class UserEvents extends StatelessWidget {
   @override
@@ -20,7 +20,7 @@ class UserEvents extends StatelessWidget {
         ),
       ),
       body: StreamBuilder<QuerySnapshot>(
-        // todo cache stream with Provider or GetIt
+        // todo cache stream with Provider
         stream: Firestore.instance
             .collection('Events')
             .orderBy('created', descending: true)
@@ -31,7 +31,7 @@ class UserEvents extends StatelessWidget {
           return ListView(
             padding: const EdgeInsets.only(top: 20.0),
             children: snapshot.data.documents
-                .map((data) => _UserEventTile(Record.fromSnapshot(data)))
+                .map((data) => _UserEventTile(UserEvent.fromSnapshot(data)))
                 .toList(),
           );
         },
@@ -41,7 +41,7 @@ class UserEvents extends StatelessWidget {
 }
 
 class _UserEventTile extends StatelessWidget {
-  final Record record;
+  final UserEvent record;
 
   const _UserEventTile(this.record, {Key key}) : super(key: key);
 

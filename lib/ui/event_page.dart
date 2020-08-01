@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wpi_campus/home_event.dart';
+import 'package:wpi_campus/model/home_event.dart';
 
 class EventPage extends StatefulWidget {
   final HomeEvent homeEvent;

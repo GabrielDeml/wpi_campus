@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wpi_campus/record.dart';
+import 'package:wpi_campus/model/user_event.dart';
 
 class UserEventPage extends StatelessWidget {
-  final Record record;
+  final UserEvent record;
 
   const UserEventPage(this.record, {Key key}) : super(key: key);
 
