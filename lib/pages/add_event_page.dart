@@ -60,6 +60,7 @@ class _AddEvent extends State<AddEvent> {
     );
 
     return Scaffold(
+      // TODO: Fix me!!!
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,

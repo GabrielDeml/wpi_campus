@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wpi_campus/favorites_page.dart';
+import 'package:wpi_campus/pages/favorites_page.dart';
 import 'package:wpi_campus/home_event.dart';
 import 'package:wpi_campus/chip_drawer.dart';
 import 'package:wpi_campus/event_card.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wpi_campus/home_event.dart';
 
-import 'event_card.dart';
+import '../event_card.dart';
 
 class FavoritePage extends StatefulWidget {
   final List<HomeEvent> _favorites;

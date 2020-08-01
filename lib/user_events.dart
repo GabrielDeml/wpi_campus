@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:wpi_campus/record.dart';
-import 'package:wpi_campus/user_event_page.dart';
+import 'package:wpi_campus/pages/user_event_page.dart';
 
 class UserEvents extends StatelessWidget {
   @override

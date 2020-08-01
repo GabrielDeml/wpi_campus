@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:wpi_campus/add_event.dart';
-import 'package:wpi_campus/home.dart';
+import 'package:wpi_campus/pages/add_event_page.dart';
+import 'package:wpi_campus/pages/home_page.dart';
 import 'package:wpi_campus/user_events.dart';
 
 void main() {

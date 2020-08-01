@@ -25,10 +25,7 @@ class UserEventPage extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
-//        Text(snapShotData.description)
           _buildImage(),
-//        _buildTitleText(homeEvent),
-//        _buildChips(homeEvent),
           _buildGeneralInfo(),
           _buildDescriptionHeader(),
           _buildDescription(),
@@ -82,53 +79,6 @@ class UserEventPage extends StatelessWidget {
       ),
     );
   }
-
-//  Widget _buildChips(homeEvent) {
-//    final chips = homeEvent.chips;
-//
-//    return Row(
-//        children: List.generate(chips.length, (index) {
-//          return Container (
-//            padding: EdgeInsets.only(left: 15.0, top: 10),
-//            child: Chip(
-//              label: Text(chips[index]),
-//              backgroundColor: Color.fromRGBO(170, 42, 54, 1.0),
-//              labelStyle: TextStyle(color: Colors.white),
-//              labelPadding: EdgeInsets.only(top: 0, bottom: 0, left: 10, right: 10),
-//            ),
-//          );
-//        })
-//    );
-//  }
-
-//  Widget _buildTitleText(homeEvent) {
-//    final _font = TextStyle(fontSize: 36.0, color: Colors.black);
-//    return Row(
-//      children: <Widget>[
-//        Container(
-//          width: 300,
-//          padding: EdgeInsets.only(left: 15.0, top: 15.0),
-//          child: Text(homeEvent.title, style: _font),
-//        ),
-//        Container(
-//          padding: EdgeInsets.only(left: 50, top: 10),
-//          child: IconButton(
-//            icon: favorites.contains(homeEvent)? new Icon(Icons.favorite) : new Icon(Icons.favorite_border),
-//            color: favorites.contains(homeEvent)? Color.fromRGBO(170, 42, 54, 1.0) : Colors.black,
-//            onPressed: () {
-//              setState(() {
-//                if(favorites.contains(homeEvent)) {
-//                  favorites.remove(homeEvent);
-//                } else {
-//                  favorites.add(homeEvent);
-//                }
-//              });
-//            },
-//          ),
-//        )
-//      ],
-//    );
-//  }
 
   Widget _buildImage() {
     return Container(
