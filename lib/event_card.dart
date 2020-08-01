@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wpi_campus/homeEvent.dart';
+import 'package:wpi_campus/home_event.dart';
 
-import 'eventPage.dart';
+import 'event_page.dart';
 
 class EventCard extends StatefulWidget {
   final List<HomeEvent> _homeEvents;
