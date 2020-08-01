@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'homeEvent.dart';
-import 'eventPage.dart';
+import 'home_event.dart';
+import 'event_page.dart';
 
 class EventSearchDelegate extends SearchDelegate<HomeEvent> {
   List<HomeEvent> allEvents;
