@@ -11,7 +11,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<List<HomeEvent>>(
-      stream: get<DataRepository>().homeEvents,
+      stream: get<DataRepository>().homeEventsStream,
       builder: (context, snapshot) {
         if (!snapshot.hasData) return CircularProgressIndicator();
         final homeEvents = snapshot.data;

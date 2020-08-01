@@ -3,79 +3,72 @@ import 'package:get_it/get_it.dart';
 import 'package:wpi_campus/add_event.dart';
 import 'package:wpi_campus/model/home_event.dart';
 import 'package:wpi_campus/model/user_event.dart';
-import 'package:wpi_campus/ui/chip_drawer.dart';
 import 'package:wpi_campus/ui/event_page.dart';
-import 'package:wpi_campus/ui/home.dart';
 import 'package:wpi_campus/model/repositories/data_repository.dart';
 import 'package:wpi_campus/model/repositories/firebase/firebase_data_repository.dart';
 import 'package:wpi_campus/ui/user_event_page.dart';
-import 'package:wpi_campus/ui/user_events.dart';
 
 final get = GetIt.instance;
+
+// todo consider using a material swatch instead of just primary color
+final _theme = ThemeData(primaryColor: Color.fromRGBO(172, 43, 55, 1));
 
 void main() {
   get.registerSingleton<DataRepository>(FirebaseDataRepository());
   runApp(MaterialApp(
     title: 'WPI Event Manager',
-    theme: ThemeData(
-      // todo consider using a material swatch instead of just primary color
-      primaryColor: Color.fromRGBO(172, 43, 55, 1),
-      // todo toggle for bright/dark mode? or follow system
-      brightness: Brightness.dark, // todo(gabe) can use Brightness.light too
-    ),
-    home: MainPage(),
+    theme: _theme.copyWith(brightness: Brightness.light),
+    darkTheme: _theme.copyWith(brightness: Brightness.dark),
+    themeMode: ThemeMode.system,
+    home: _MainPage(),
   ));
 }
 
-class MainPage extends StatelessWidget {
+// todo move the following to different files
+
+class _MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
           // todo logo, search icon
           ),
-      body: Body(),
-      // todo if not signed in make this null
+      // todo if not signed in make this fab null
       floatingActionButton: FloatingActionButton(
-          tooltip: 'Create Event',
-          child: Icon(Icons.add),
-          onPressed: () {
-            // todo add event page
-          }),
-    );
-  }
-}
-
-class Body extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return StreamBuilder<List>(
-      stream: get<DataRepository>().mergedEvents,
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) {
-          return LinearProgressIndicator();
-        }
-        final list = snapshot.data;
-        return Column(children: [
-          ChipDrawer(list.where((e) => e is HomeEvent).toList(), []),
-          Expanded(
-            // todo switch to grid on bigger screen sizes
-            child: ListView.builder(
-              itemCount: list.length,
-              itemBuilder: (context, index) {
-                final item = list[index];
-                if (item is HomeEvent) {
-                  return HomeEventCard(event: item);
-                } else if (item is UserEvent) {
-                  return UserEventCard(event: item);
-                }
-                print('Event list contains a non-event: $item');
-                return Container();
-              },
+        tooltip: 'Create Event',
+        child: Icon(Icons.add),
+        onPressed: () => Navigator.push(
+            context, MaterialPageRoute(builder: (_) => AddEvent())),
+      ),
+      body: StreamBuilder<List>(
+        stream: get<DataRepository>().eventsStream,
+        builder: (context, snapshot) {
+          if (snapshot.data == null) {
+            return LinearProgressIndicator();
+          }
+          final list = snapshot.data;
+          return Column(children: [
+            // todo put chips as expandable (drop down) wrap here
+            //   chips could also be implemented as sliding up bottom modal
+            Expanded(
+              // todo switch to grid on bigger screen sizes
+              child: ListView.builder(
+                itemCount: list.length,
+                itemBuilder: (context, index) {
+                  final item = list[index];
+                  if (item is HomeEvent) {
+                    return HomeEventCard(event: item);
+                  } else if (item is UserEvent) {
+                    return UserEventCard(event: item);
+                  }
+                  print('Event list contains a non-event: $item');
+                  return Container();
+                },
+              ),
             ),
-          ),
-        ]);
-      },
+          ]);
+        },
+      ),
     );
   }
 }
@@ -97,10 +90,14 @@ class HomeEventCard extends StatelessWidget {
             MaterialPageRoute(builder: (context) => EventPage(event, [])),
           );
         },
+        // todo use hero to animate image & make info page use sliver app bar
         child: Container(
           height: 296,
           decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage(event.img)),
+            image: DecorationImage(
+              image: AssetImage(event.img),
+              fit: BoxFit.cover,
+            ),
           ),
           child: Column(children: [
             Expanded(child: Container()),
@@ -108,6 +105,7 @@ class HomeEventCard extends StatelessWidget {
               height: 160,
               color: Color.fromRGBO(172, 43, 55, 0.9),
               child: Column(children: [
+                // todo
                 Text(event.title),
                 Placeholder(),
               ]),
@@ -126,13 +124,9 @@ class UserEventCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      key: ValueKey(event.name),
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
-        borderRadius: BorderRadius.circular(5.0),
-      ),
+    return Card(
+      margin: const EdgeInsets.all(8),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: ListTile(
         title: Text(event.name),
         subtitle: Text(event.description),
