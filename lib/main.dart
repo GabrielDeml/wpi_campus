@@ -5,6 +5,7 @@ import 'package:wpi_campus/ui/home.dart';
 import 'package:wpi_campus/model/repositories/data_repository.dart';
 import 'package:wpi_campus/model/repositories/firebase/firebase_data_repository.dart';
 import 'package:wpi_campus/ui/user_events.dart';
+import 'package:wpi_campus/ui/user_sigIn_page.dart';
 
 final get = GetIt.instance;
 
@@ -37,6 +38,8 @@ class _MainPageState extends State<MainPage> {
       case 2:
         body = AddEvent();
         break;
+      case 3:
+        body = SignInDemo();
     }
 
     return Scaffold(
@@ -56,6 +59,10 @@ class _MainPageState extends State<MainPage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.add),
             title: Text('Add Event'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            title: Text('Testing'),
           ),
         ],
         currentIndex: _selectedIndex,
