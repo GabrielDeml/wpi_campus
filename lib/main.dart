@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:wpi_campus/event_search_delegate.dart';
 import 'package:wpi_campus/ui/add_event.dart';
 import 'package:wpi_campus/model/home_event.dart';
 import 'package:wpi_campus/model/user_event.dart';
@@ -36,6 +37,7 @@ class _MainPage extends StatelessWidget {
           height: 32,
         ),
         actions: <Widget>[
+          // fixme favorites and search?
 //          IconButton(
 //            icon: Icon(Icons.favorite),
 //            onPressed: () => Navigator.push(
@@ -43,16 +45,15 @@ class _MainPage extends StatelessWidget {
 //              MaterialPageRoute(builder: (_) => FavoritePage(favorites)),
 //            ),
 //          ),
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-              // todo add search
+//          IconButton(
+//            icon: Icon(Icons.search),
+//            onPressed: () {
 //              showSearch(
 //                context: context,
 //                delegate: EventSearchDelegate(homeEvents, favorites),
 //              );
-            },
-          )
+//            },
+//          )
         ],
       ),
       // todo if not signed in make this fab null
