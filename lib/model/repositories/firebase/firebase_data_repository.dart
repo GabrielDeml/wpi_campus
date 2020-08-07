@@ -71,14 +71,26 @@ const _event3 = HomeEvent(
 const _homeEvents = [_event1, _event2, _event3];
 
 class FirebaseDataRepository extends DataRepository {
-  @override
-  // TODO: implement homeEvents
-  Stream<List<HomeEvent>> get homeEvents => BehaviorSubject.seeded(_homeEvents);
+  // ignore: close_sinks
+  final _homeEventsStream = BehaviorSubject<List<HomeEvent>>.seeded(null);
+
+  // ignore: close_sinks
+  final _userEventsStream = BehaviorSubject<List<UserEvent>>.seeded(null);
+
+  FirebaseDataRepository() {
+    _userEventsStream.addStream(Firestore.instance
+        .collection('Events')
+        .orderBy('created', descending: true)
+        .snapshots()
+        .map((snapshot) => snapshot.documents
+            .map((doc) => UserEvent.fromSnapshot(doc))
+            .toList()));
+    _homeEventsStream.add(_homeEvents); // fixme use firebase for home events
+  }
 
   @override
-  Stream<List<UserEvent>> get userEvents => Firestore.instance
-      .collection('Events')
-      .orderBy('created', descending: true)
-      .snapshots()
-      .map((snap) => snap.documents.map((doc) => UserEvent.fromSnapshot(doc)));
+  BehaviorSubject<List<HomeEvent>> get homeEventsStream => _homeEventsStream;
+
+  @override
+  BehaviorSubject<List<UserEvent>> get userEventsStream => _userEventsStream;
 }
